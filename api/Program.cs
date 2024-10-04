@@ -31,7 +31,6 @@ app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
 
-app.MapGet("/api/test", () => "API is running!");
 app.MapControllers();
 
 app.Run();
