@@ -25,6 +25,8 @@ const App = () => {
   return (
     <div>
       <h1>React & C# Tic Tac Toe</h1>
+      <p>Current Player: {currentPlayer}</p>
+      <p>Game Status: {isGameOver ? result : "In Progress"}</p>
     </div>
   )
 }
