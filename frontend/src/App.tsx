@@ -14,6 +14,7 @@ const App = () => {
     fetch("http://localhost:5223/api/game/board")
       .then((response) => response.json())
       .then((data) => {
+        console.log("API Response:", data); 
         setBoard(data.board);
         setCurrentPlayer(data.currentPlayer);
         setIsGameOver(data.isGameOver);

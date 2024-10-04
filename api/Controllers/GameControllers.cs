@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/game")]
     public class GameControllers : ControllerBase
     {
         private static TicTacToe _game = new TicTacToe();
