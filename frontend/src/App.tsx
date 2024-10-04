@@ -36,6 +36,18 @@ const App = () => {
       .catch((error) => console.error("Error making move: ", error));
   };
 
+  const resetGame = () => {
+    fetch("http://localhost:5223/api/game/reset", { method: "POST" })
+      .then((response) => response.json())
+      .then((data) => {
+        setBoard(data.board);
+        setCurrentPlayer(data.currentPlayer);
+        setIsGameOver(data.isGameOver);
+        setResult(data.result);
+      })
+      .catch((error) => console.error("Error resetting game: ", error));
+  };
+
   return (
     <div>
       <h1>React & C# Tic Tac Toe</h1>
@@ -61,6 +73,13 @@ const App = () => {
           </div>
         ))}
       </div>
+      <button
+        onClick={resetGame}
+        style={{ marginTop: "20px", padding: "10px", fontSize: "16px" }}
+        disabled={!isGameOver}
+      >
+        Reset Game
+      </button>
     </div>
   )
 }
