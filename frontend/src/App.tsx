@@ -22,11 +22,45 @@ const App = () => {
       .catch((error) => console.error("Error fetching board: ", error));
   };
 
+  const handleMove = (index: number) => {
+    if (isGameOver || board[index]) return; 
+  
+    fetch(`http://localhost:5223/api/game/move?index=${index}`, { method: "POST" })
+      .then((response) => response.json())
+      .then((data) => {
+        setBoard(data.board);
+        setCurrentPlayer(data.currentPlayer);
+        setIsGameOver(data.isGameOver);
+        setResult(data.result);
+      })
+      .catch((error) => console.error("Error making move: ", error));
+  };
+
   return (
     <div>
       <h1>React & C# Tic Tac Toe</h1>
       <p>Current Player: {currentPlayer}</p>
       <p>Game Status: {isGameOver ? result : "In Progress"}</p>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 100px)", gap: "10px" }}>
+        {board.map((cell, index) => (
+          <div
+            key={index}
+            onClick={() => handleMove(index)}
+            style={{
+              width: "100px",
+              height: "100px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid black",
+              fontSize: "24px",
+              cursor: isGameOver || cell ? "not-allowed" : "pointer",
+            }}
+          >
+            {cell}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
