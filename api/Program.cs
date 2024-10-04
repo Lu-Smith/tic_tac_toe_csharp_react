@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
@@ -30,6 +32,7 @@ app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
 
 app.MapGet("/api/test", () => "API is running!");
+app.MapControllers();
 
 app.Run();
 
