@@ -27,3 +27,8 @@ C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\obj\Debug\net8
 C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\obj\Debug\net8.0\api.dll
 C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\obj\Debug\net8.0\refint\api.dll
 C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\obj\Debug\net8.0\api.pdb
+C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\bin\Debug\net8.0\api.deps.json
+C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\bin\Debug\net8.0\api.runtimeconfig.json
+C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\bin\Debug\net8.0\api.pdb
+C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\obj\Debug\net8.0\api.genruntimeconfig.cache
+C:\Users\lunas\Desktop\web developer\tic_tac_toe_csharp_react\api\obj\Debug\net8.0\ref\api.dll
