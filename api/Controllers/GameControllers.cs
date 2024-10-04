@@ -40,5 +40,18 @@ namespace api.Controllers
                 Result = result
             });
         }
+
+        [HttpPost("reset")]
+        public IActionResult ResetGame()
+        {
+            _game = new TicTacToe();  // Reset the game state
+            return Ok(new
+            {
+                Board = _game.Board,
+                CurrentPlayer = _game.CurrentPlayer,
+                IsGameOver = _game.IsGameOver,
+                Result = _game.Result
+            });
+        }
     }
 }
