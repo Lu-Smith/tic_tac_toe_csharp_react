@@ -24,10 +24,25 @@ const App = () => {
   };
 
   const handleMove = (index: number) => {
-    console.log("Move made at index:", index); // Check if this logs when you click
-    if (isGameOver || board[index]) return; 
-    // ... rest of your code
-};
+    console.log("Move made at index:", index); 
+    if (isGameOver || board[index] != "-") return; 
+    
+    fetch(`http://localhost:5223/api/game/move?index=${index}`, { method: "POST" })
+      .then((response) => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Move response data:", data); 
+        setBoard(data.board);
+        setCurrentPlayer(data.currentPlayer);
+        setIsGameOver(data.isGameOver);
+        setResult(data.result);
+      })
+      .catch((error) => console.error("Error making move: ", error));
+  };
 
   const resetGame = () => {
     fetch("http://localhost:5223/api/game/reset", { method: "POST" })
@@ -59,7 +74,7 @@ const App = () => {
               justifyContent: "center",
               border: "1px solid black",
               fontSize: "24px",
-              // cursor: isGameOver || cell ? "not-allowed" : "pointer",
+              cursor: isGameOver || cell != "-" ? "not-allowed" : "pointer",
             }}
           >
             {cell}

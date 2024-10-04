@@ -28,10 +28,12 @@ namespace api.Controllers
         [HttpPost("move")]
         public IActionResult MakeMove([FromQuery] int index)
         {
+             Console.WriteLine($"Received move at index: {index}");
             if (_game.IsGameOver)
                 return BadRequest("The game is already over!");
 
             var result = _game.MakeMove(index);
+
             return Ok(new
             {
                 Board = _game.Board,
