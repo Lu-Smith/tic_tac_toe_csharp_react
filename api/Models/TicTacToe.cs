@@ -15,7 +15,7 @@ namespace api.Models
         // initial board
         public TicTacToe()
         {
-            Board = new char[9] { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
+            Board = Enumerable.Repeat('-', 9).ToArray();
             CurrentPlayer = 'X';
             IsGameOver = false;
             Result = "Game in progress";
