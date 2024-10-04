@@ -1,20 +1,30 @@
 import { useEffect, useState } from "react"
 
 const App = () => {
-
-  const [apiResponse, setApiResponse] = useState('');
+  const [board, setBoard] = useState(Array(9).fill("")); 
+  const [currentPlayer, setCurrentPlayer] = useState("");
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [result, setResult] = useState("");
 
   useEffect(() => {
-    fetch('http://localhost:5223/api/test')
-    .then((response) => response.text())
-    .then((data) => setApiResponse(data))
-    .catch((error) => console.error("Error fetching API: ", error));
+    fetchBoard();
   }, []);
+
+  const fetchBoard = () => {
+    fetch("http://localhost:5223/api/game/board")
+      .then((response) => response.json())
+      .then((data) => {
+        setBoard(data.board);
+        setCurrentPlayer(data.currentPlayer);
+        setIsGameOver(data.isGameOver);
+        setResult(data.result);
+      })
+      .catch((error) => console.error("Error fetching board: ", error));
+  };
 
   return (
     <div>
       <h1>React & C# Tic Tac Toe</h1>
-      <p>API Response: {apiResponse}</p>
     </div>
   )
 }
