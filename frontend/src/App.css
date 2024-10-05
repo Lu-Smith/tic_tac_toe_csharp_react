@@ -3,14 +3,18 @@
 body {
   font-family: "Roboto", sans-serif;
   text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .App {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 20px;
+  background-color: hsl(180, 22%, 96%);
 
   h1 {
     font-size: 2em;
@@ -27,8 +31,8 @@ body {
   .cell {
     margin-top: 20px;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid red;
+    font-size: 36px;
+    border: 2px solid hsl(178, 23%, 33%);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -36,6 +40,11 @@ body {
     align-items: center;
     width: 100px;
     height: 100px;
+    background-color: hsl(179, 34%, 76%);
+  }
+
+  .cell:hover {
+    background-color: hsl(179, 34%, 86%);
   }
 }
 
@@ -48,5 +57,19 @@ button {
   padding: 10px;
   font-size: 16px;
   border-radius: 15px;
-  border: 1px solid red;
+  border: 1px solid hsl(178, 23%, 33%);
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: hsl(178, 23%, 33%);
+}
+
+a:hover {
+  color: hsl(178, 23%, 53%);
 }
