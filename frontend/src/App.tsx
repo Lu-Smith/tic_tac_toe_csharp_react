@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import './App.css';
+import Footer from "./components/Footer";
 
 const App = () => {
   const [board, setBoard] = useState(Array(9).fill("")); 
@@ -57,37 +59,28 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>React & C# Tic Tac Toe</h1>
-      <p>Current Player: {currentPlayer}</p>
-      <p>Game Status: {isGameOver ? result : "In Progress"}</p>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 100px)", gap: "10px" }}>
+    <div className="App">
+      <h1>React & C# <span>Tic Tac Toe</span></h1>
+      <p>Current Player: <span>{currentPlayer}</span></p>
+      <p>Game Status: <span>{isGameOver ? result : "In Progress"}</span></p>
+      <div className="grid">
         {board.map((cell, index) => (
           <div
             key={index}
             onClick={() => handleMove(index)}
-            style={{
-              width: "100px",
-              height: "100px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              border: "1px solid black",
-              fontSize: "24px",
-              cursor: isGameOver || cell != "-" ? "not-allowed" : "pointer",
-            }}
+            className="cell"
           >
-            {cell}
+            <span>{cell}</span>
           </div>
         ))}
       </div>
       <button
         onClick={resetGame}
-        style={{ marginTop: "20px", padding: "10px", fontSize: "16px" }}
         disabled={!isGameOver}
       >
         Reset Game
       </button>
+      <Footer />
     </div>
   )
 }
