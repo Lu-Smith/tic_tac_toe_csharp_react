@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import './App.css';
 import Footer from "./components/Footer";
+import Game from "./components/Game";
 
-const App = () => {
+const App: React.FC = () => {
   const [board, setBoard] = useState(Array(9).fill("")); 
   const [currentPlayer, setCurrentPlayer] = useState("");
   const [isGameOver, setIsGameOver] = useState(false);
@@ -60,20 +61,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>React & C# <span>Tic Tac Toe</span></h1>
+      <h1><span>Tic Tac Toe</span></h1>
       <p>Current Player: <span>{currentPlayer}</span></p>
       <p>Game Status: <span>{isGameOver ? result : "In Progress"}</span></p>
-      <div className="grid">
-        {board.map((cell, index) => (
-          <div
-            key={index}
-            onClick={() => handleMove(index)}
-            className="cell"
-          >
-            <span>{cell}</span>
-          </div>
-        ))}
-      </div>
+      <Game board={board} handleMove={handleMove} />
       <button
         onClick={resetGame}
         disabled={!isGameOver}
